@@ -36,7 +36,7 @@ module REPF
          :dew_point => DEFAULT_DEW_POINT,
          :air_pressure => DEFAULT_AIR_PRESSURE,
          :swept_area => DEFAULT_SWEPT_AREA} if args.empty?
-    
+
       if Hash === args.first
         args = args.first
       elsif Array === args
@@ -49,8 +49,8 @@ module REPF
       self.feathered_output = args[:feathered_output] || DEFAULT_FEATHERED_OUTPUT
       self.rated_peak_wind = args[:rated_peak_wind] || DEFAULT_RATED_PEAK_WIND
       self.temperature = args[:temperature] || DEFAULT_TEMPERATURE
-      self.dew_point => args[:dew_point] || DEFAULT_DEW_POINT
-      self.air_pressure => args[:air_pressure] || DEFAULT_AIR_PRESSURE
+      self.dew_point = args[:dew_point] || DEFAULT_DEW_POINT
+      self.air_pressure = args[:air_pressure] || DEFAULT_AIR_PRESSURE
       self.swept_area = args[:swept_area] || DEFAULT_SWEPT_AREA
     end
 
