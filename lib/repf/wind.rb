@@ -7,15 +7,15 @@ module REPF
 
     # metric measurements for all. Wind speeds are meters per second.
 
-    DEFAULT_WIND = 4.5
-    DEFAULT_CUTIN = 4.5
-    DEFAULT_FEATHERING_CUTIN = 18
-    DEFAULT_FEATHERED_OUTPUT = 0.5
-    DEFAULT_RATED_PEAK_WIND = 16
-    DEFAULT_TEMPERATURE = 20
-    DEFAULT_SWEPT_AREA = 1
-    DEFAULT_DEW_POINT = 0
-    DEFAULT_AIR_PRESSURE = 102000
+    DEFAULT_WIND = 4.5 # meters per second
+    DEFAULT_CUTIN = 4.5 # meters per second
+    DEFAULT_FEATHERING_CUTIN = 18 # meters per second
+    DEFAULT_FEATHERED_OUTPUT = 0.5 # meters per second
+    DEFAULT_RATED_PEAK_WIND = 16 # meters per second
+    DEFAULT_TEMPERATURE = 20 # celcius
+    DEFAULT_SWEPT_AREA = 1 # square meters
+    DEFAULT_DEW_POINT = 10 # celcius
+    DEFAULT_AIR_PRESSURE = 101325 # standard atmosphere
 
     def self.mph_to_meters_per_second(mph)
       #  miles_per_hour * ( 5280_feet_per_mile / 3600_seconds_per_hour ) * 0.3048_meters_per_foot
@@ -57,7 +57,7 @@ module REPF
     # The total available power in the wind is one half the air density multiplied by the
     # swept area and the wind speed.
     def total_available_power(w = wind)
-      0.5 * air_density * swept_area * w
+      0.5 * air_density * swept_area * ( w ** 3 )
     end
 
     # If the turbine produces CAPACITY watts at peak, then it's efficiency is determined
