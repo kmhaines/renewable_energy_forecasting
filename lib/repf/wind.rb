@@ -5,7 +5,7 @@ module REPF
 
     attr_accessor :wind, :cutin, :feathering_cutin, :feathered_output, :rated_peak_wind, :temperature, :dew_point, :air_pressure, :swept_area
 
-    # metric measurements for all.
+    # metric measurements for all. Wind speeds are meters per second.
 
     DEFAULT_WIND = 4.5
     DEFAULT_CUTIN = 4.5
@@ -54,14 +54,20 @@ module REPF
       self.swept_area = args[:swept_area] || DEFAULT_SWEPT_AREA
     end
 
+    # The total available power in the wind is one half the air density multiplied by the
+    # swept area and the wind speed.
     def total_available_power(w = wind)
       0.5 * air_density * swept_area * w
     end
 
+    # If the turbine produces CAPACITY watts at peak, then it's efficiency is determined
+    # by dividing that capacity by the total available power in the wind at the turbine's peak
+    # capacity.
     def efficiency_at_peak
       capacity / total_available_power( rated_peak_wind )
     end
 
+    # If the wind is higher than the turbine's cutin speed, it will generate power.
     def instant_power
       wind < cutin ? 0 : total_available_power * efficiency_at_peak
     end
