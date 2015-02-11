@@ -11,10 +11,10 @@ end
 predictor = REPF::SolarPredictor.new(raw_data)
 watts_err, avg_mse, r_squared = predictor.train
 
-puts "\nPretraining prediction error: #{watts_err} watts (mse: #{avg_mse}%, r-squared: #{r_squared}\n"
+puts "\nPretraining prediction error: #{watts_err} watts (mse: #{avg_mse}%, r-squared: #{r_squared})\n"
 
 watts_err, avg_mse, r_squared = predictor.validate
-puts "\nAfter training prediction error: #{watts_err} watts (mse: #{avg_mse}%, r-squared: #{r_squared}\n"
+puts "\nAfter training prediction error: #{watts_err} watts (mse: #{avg_mse}%, r-squared: #{r_squared})\n"
 
 puts "\nSamples of the difference between actual data and their predictions\n"
 
