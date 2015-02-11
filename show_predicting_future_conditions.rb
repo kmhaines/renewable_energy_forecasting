@@ -32,7 +32,7 @@ print "Training #{solar_predictors.length + wind_predictors.length} predictors..
 solar_predictors.each {|predictor| print "."; predictor.train}
 wind_predictors.each {|predictor| print "."; predictor.train}
 
-puts "Validating predictor training"
+puts "\n\nValidating predictor training"
 solar_errors = []
 solar_predictors.each {|predictor| solar_errors << predictor.validate}
 wind_errors = []
