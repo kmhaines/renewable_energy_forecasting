@@ -4,7 +4,7 @@ require 'repf/predictor/wind'
 
 solar_predictors = []
 10.times do
-  data_size = (60 + ( (rand() * 10).to_i * 30 ) )
+  data_size = (60 + ( (rand() * 10).to_i * 30 ) ) # simulate having varying amounts of historical data for each generator
   raw_data = []
   data_size.times do
     temp = ( 10 * (rand() * 5).to_i)
@@ -16,7 +16,7 @@ end
 
 wind_predictors = []
 10.times do
-  data_size = (60 + ( (rand() * 10).to_i * 30 ) )
+  data_size = (60 + ( (rand() * 10).to_i * 30 ) ) # simulate having varying amounts of historical data for each generator
   raw_data = []
   data_size.times do
     temp = ( 10 * (rand() * 5).to_i)
