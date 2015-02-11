@@ -4,7 +4,7 @@ module REPF
 
   class Predictor
 
-    attr_accessor :max_watts
+    attr_accessor :max_watts, :neuralnet
 
     def initialize(data_set = [])
       @data_set = data_set
@@ -86,7 +86,6 @@ module REPF
     def train
       prepare
       traindata = RubyFann::TrainData.new(:inputs => @inputs, :desired_outputs => @desired_outputs)
-      puts "setup neural net with #{input_neuron_count} / #{hidden_neuron_count}"
       @neuralnet = RubyFann::Standard.new(:num_inputs => input_neuron_count, :hidden_neurons => [hidden_neuron_count], :num_outputs => 1)
 
       data_length = @inputs.length
@@ -97,7 +96,7 @@ module REPF
 
       # puts "Average prediction error: #{watts_err.round(2)} watts (mse: #{(avg_mse * 100).round(2)}%, r-squared: #{r_squared.round(2)})"
 
-      @neuralnet.train_on_data(traindata, 10000, 10000, 0.00005)
+      @neuralnet.train_on_data(traindata, 10000, 0, 0.00005)
 
       [watts_err.round(2), (avg_mse * 100).round(2), r_squared.round(2)]
     end

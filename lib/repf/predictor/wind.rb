@@ -6,7 +6,6 @@ module REPF
     attr_accessor :max_wind, :max_cutin, :max_rated_peak_wind, :max_temperature, :max_dew_point, :max_air_pressure
 
     def initialize(data_set = [])
-      puts "initialize"
       super
 
       self.max_wind = determine_max_wind
