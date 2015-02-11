@@ -6,6 +6,7 @@ module REPF
     attr_accessor :max_wind, :max_cutin, :max_rated_peak_wind, :max_temperature, :max_dew_point, :max_air_pressure
 
     def initialize(data_set = [])
+      puts "initialize"
       super
 
       self.max_wind = determine_max_wind
@@ -73,6 +74,14 @@ module REPF
                 scale( data.air_pressure, 0..max_air_pressure, 0..1 ), ]
       output = [ scale( data.instant_power, 0..max_watts, 0..1 ) ]
       [input, output]
+    end
+
+    def input_neuron_count
+      6
+    end
+
+    def hidden_neuron_count
+      6
     end
 
   end

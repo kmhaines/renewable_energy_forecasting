@@ -86,7 +86,8 @@ module REPF
     def train
       prepare
       traindata = RubyFann::TrainData.new(:inputs => @inputs, :desired_outputs => @desired_outputs)
-      @neuralnet = RubyFann::Standard.new(:num_inputs => 4, :hidden_neurons => [4], :num_outputs => 1)
+      puts "setup neural net with #{input_neuron_count} / #{hidden_neuron_count}"
+      @neuralnet = RubyFann::Standard.new(:num_inputs => input_neuron_count, :hidden_neurons => [hidden_neuron_count], :num_outputs => 1)
 
       data_length = @inputs.length
       testing_data_length = data_length / 2
@@ -112,6 +113,14 @@ module REPF
       data_length = @inputs.length
       testing_data_length = data_length / 2
       show_examples(@inputs[0..testing_data_length], @desired_outputs[0..testing_data_length],count)
+    end
+
+    def input_neuron_count
+      4
+    end
+
+    def hidden_neuron_count
+      4
     end
 
   end
