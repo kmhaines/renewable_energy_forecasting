@@ -80,7 +80,7 @@ module REPF
     end
 
     def hidden_neuron_count
-      6
+      10
     end
 
   end
