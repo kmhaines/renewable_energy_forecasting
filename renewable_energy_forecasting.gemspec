@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'renewable_energy_forecasting/version'
+require 'repf/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "renewable_energy_forecasting"
-  spec.version       = RenewableEnergyForecasting::VERSION
+  spec.version       = REPF::VERSION
   spec.authors       = ["Katrina Haines"]
   spec.email         = ["katrinahaines@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Proof of concept implementation of a system to predict renewable energy outputs using neural network based models.}
+  spec.description   = %q{This is a system to, with knowledge of a small scale provider's installation type and rated max capacity, produce reliable near and long term estimates of power generation that factor in weather patterns as well as solar radiation patterns, using a neural network to create an accurate model of the renewable power installation's performance under diverse environmental conditions.}
+  spec.homepage      = "http://katrina-isef.swiftcore.org"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
