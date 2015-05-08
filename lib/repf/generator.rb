@@ -13,7 +13,7 @@ require 'digest/sha1'
     # return an instant_power, which is defined as max capacity time efficiency, and
     # a power over time, which is defined as the instant power, times the time span,
     # time a variation, which will simulate power levels varying over time.
-    attr_accessor :capacity, :efficiency, :input, :timespan, :q
+    attr_accessor :capacity, :efficiency, :input, :timespan, :power, :q
 
     DEFAULT_CAPACITY = 100
     DEFAULT_EFFICIENCY = 1
@@ -33,10 +33,17 @@ require 'digest/sha1'
       self.efficiency = args[:efficiency] || 1
       self.timespan = args[:timespan] || 10
       self.q = args[:q] || 0
+      self.power = args[:power].to_f if args[:power]
+
+      self.capacity = power / generator_capacity_multiplier if power
     end
 
     def instant_power
-      capacity * efficiency
+      capacity * generator_capacity_multiplier
+    end
+
+    def generator_capacity_multiplier
+      efficiency
     end
 
     def power_over_time(ts = timespan)

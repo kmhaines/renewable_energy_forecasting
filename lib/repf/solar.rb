@@ -27,10 +27,18 @@ module REPF
       self.insolation = args[:insolation] || DEFAULT_INSOLATION
       self.cloud_cover = args[:cloud_cover] || DEFAULT_CLOUD_COVER
       self.temperature = args[:temperature] || DEFAULT_AMBIENT_TEMPERATURE
+
+      self.power = args[:power].to_f if args[:power]
+
+      self.capacity = power / solar_capacity_multiplier if power
     end
 
     def instant_power
-      capacity * ( insolation / 1000 ) * ( 1 - cloud_cover ) * temperature_adjustment * q_factor
+      capacity * solar_capacity_multiplier
+    end
+
+    def solar_capacity_multiplier
+      ( insolation / 1000 ) * ( 1 - cloud_cover ) * temperature_adjustment * q_factor
     end
 
     def temperature_adjustment

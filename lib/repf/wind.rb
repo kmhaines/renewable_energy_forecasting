@@ -52,6 +52,9 @@ module REPF
       self.dew_point = args[:dew_point] || DEFAULT_DEW_POINT
       self.air_pressure = args[:air_pressure] || DEFAULT_AIR_PRESSURE
       self.swept_area = args[:swept_area] || DEFAULT_SWEPT_AREA
+      self.power = args[:power]
+
+      #self.capacity = power / capacity_multiplier if power # TODO: Fix this
     end
 
     # The total available power in the wind is one half the air density multiplied by the

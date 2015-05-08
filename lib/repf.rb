@@ -1,5 +1,6 @@
 require 'repf/solar'
 require 'repf/wind'
+require 'repf/generic_data'
 
 class Array
   def even

@@ -8,6 +8,12 @@ DATA_SIZE.times do
   raw_data << REPF::Wind.new( :capacity => 1000, :wind => ( rand() * 15 ), :temperature => temp, :dew_point => (5 + ( ( rand() * 18 ).to_i ) ), :air_pressure => ( 98000 + ( ( rand() * 6000).to_i ) ) )
 end
 
+puts "\nSample of the first 10 simulated measurements:\n"
+puts "capacity\twind\ttemperature\t\tdew point\tair pressure\twatts\n"
+raw_data[0..9].each do |wind|
+  puts "#{wind.capacity}\t\t#{wind.wind.round(1)}\t\t#{wind.temperature}\t\t#{wind.dew_point.round(1)}\t\t#{wind.air_pressure.round(1)}\t\t#{wind.instant_power.round(1)}"
+end
+
 predictor = REPF::WindPredictor.new(raw_data)
 watts_err, avg_mse, r_squared = predictor.train
 
